@@ -1,0 +1,107 @@
+{
+ "result": {
+  "hardware": {
+   "os": "Windows-11-10.0.26200-SP0",
+   "cpu": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+   "logical_cores": 24,
+   "physical_cores": 16,
+   "ram_gb": 15.7
+  },
+  "torch": "2.10.0+cpu",
+  "python": "3.12.6",
+  "numpy": "2.4.2",
+  "pandas": "2.3.1",
+  "torch_threads": 16,
+  "interop_threads": 16,
+  "dataloader_workers": 0,
+  "params": 30229,
+  "n_train": 505,
+  "n_val": 109,
+  "n_test_inputs": 229,
+  "epochs": 9,
+  "updates": 144,
+  "batch": 32,
+  "lr": 0.001,
+  "elapsed_s": 3.4912035999586806,
+  "cpu_s": 49.984375,
+  "s_per_epoch": 0.38791151110652006,
+  "stopped_by": "early stopping (5 validation checks without improvement)",
+  "peak_rss_mb": 574.70703125,
+  "rss_before_training_mb": 360.32421875,
+  "data_prep_s": 1.1113008999964222,
+  "best_val_mse": 0.3201715052127838,
+  "best_epoch": 4,
+  "first_epoch": {
+   "epoch": 1,
+   "train_mse": 0.6541658903112506,
+   "val_mse": 0.6790748238563538,
+   "epoch_s": 0.8667672000010498
+  },
+  "last_epoch": {
+   "epoch": 9,
+   "train_mse": 0.20503669567037336,
+   "val_mse": 0.43599528074264526,
+   "epoch_s": 0.3171215000329539
+  },
+  "persistence_val_mse": 1.0793315172195435,
+  "inference_s": 0.05681899999035522,
+  "inference_finite": true,
+  "val_finished": true
+ },
+ "history": [
+  {
+   "epoch": 1,
+   "train_mse": 0.6541658903112506,
+   "val_mse": 0.6790748238563538,
+   "epoch_s": 0.8667672000010498
+  },
+  {
+   "epoch": 2,
+   "train_mse": 0.48106405965172416,
+   "val_mse": 0.49985194206237793,
+   "epoch_s": 0.306923599971924
+  },
+  {
+   "epoch": 3,
+   "train_mse": 0.38005468508984785,
+   "val_mse": 0.36143234372138977,
+   "epoch_s": 0.429743500018958
+  },
+  {
+   "epoch": 4,
+   "train_mse": 0.326926200165607,
+   "val_mse": 0.3201715052127838,
+   "epoch_s": 0.3632698000292294
+  },
+  {
+   "epoch": 5,
+   "train_mse": 0.2956722513283833,
+   "val_mse": 0.37783950567245483,
+   "epoch_s": 0.32295060000615194
+  },
+  {
+   "epoch": 6,
+   "train_mse": 0.27337606785321,
+   "val_mse": 0.4479149281978607,
+   "epoch_s": 0.2962048000190407
+  },
+  {
+   "epoch": 7,
+   "train_mse": 0.2418290245946091,
+   "val_mse": 0.48178496956825256,
+   "epoch_s": 0.2812407999881543
+  },
+  {
+   "epoch": 8,
+   "train_mse": 0.2298755264223212,
+   "val_mse": 0.32716402411460876,
+   "epoch_s": 0.30692289996659383
+  },
+  {
+   "epoch": 9,
+   "train_mse": 0.20503669567037336,
+   "val_mse": 0.43599528074264526,
+   "epoch_s": 0.3171215000329539
+  }
+ ]
+}
