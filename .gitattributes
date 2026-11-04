@@ -1,0 +1,5 @@
+TrackC_ERSSTv5_subset.npz export-ignore
+ersst5.nino.mth.91-20.ascii export-ignore
+out/ export-ignore
+__pycache__/ export-ignore
+checkpoint_submission/ export-ignore

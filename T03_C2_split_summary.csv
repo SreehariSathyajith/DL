@@ -1,0 +1,5 @@
+file,partition,n_samples,n_units,sha256
+T03_C2_forecast.csv,train,505,505,1c3d5751afab708625da7fe0addc8a7dc922d285a471287d0a6b4bd369a5a905
+T03_C2_forecast.csv,val,109,109,1c3d5751afab708625da7fe0addc8a7dc922d285a471287d0a6b4bd369a5a905
+T03_C2_forecast.csv,test,229,229,1c3d5751afab708625da7fe0addc8a7dc922d285a471287d0a6b4bd369a5a905
+T03_C2_forecast.csv,excluded,22,22,1c3d5751afab708625da7fe0addc8a7dc922d285a471287d0a6b4bd369a5a905
