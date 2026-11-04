@@ -1,0 +1,14 @@
+C2 smoke test; seed=22; unscored test-shaped inference; no test metrics computed.
+Split file validated: train=505, val=109, test=229, excluded=22
+ridge alpha=0.1: samples=12; elapsed_s=0.0148; validation fit and scoring
+ridge alpha=1.0: samples=12; elapsed_s=0.0014; validation fit and scoring
+ridge alpha=10.0: samples=12; elapsed_s=0.0013; validation fit and scoring
+persistence: samples=6; elapsed_s=0.0000; validation baseline; no fitted parameters
+1-D LSTM: samples=12; elapsed_s=11.9732; 2 updates, validation, unscored 8-example test-shaped inference
+attention LSTM: samples=12; elapsed_s=0.0622; 2 updates, validation, unscored 8-example test-shaped inference
+2-D map CNN: samples=12; elapsed_s=0.1540; 2 updates, validation, unscored 8-example test-shaped inference
+attention ablation (same no-attention LSTM): samples=12; elapsed_s=0.0000; reuse of 1-D LSTM component
+fusion (index LSTM + map CNN), selected weight=1: samples=6; elapsed_s=0.0056; validation RMSE selection; no new fit
+core experiment 1: sequential vs spatial: samples=6; elapsed_s=0.0000; validation comparison
+core experiment 2: lead-wise skill and cost: samples=6; elapsed_s=0.0000; reuse same validation predictions
+TOTAL elapsed_s=17.3880
