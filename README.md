@@ -72,3 +72,15 @@ The full pipeline uses `out\cnn_best.pt` by default. A fresh run of the Week 1 s
 Reference fits use seed 22, Adam at 0.001, batch size 32, CPU, six intra-op threads, one inter-op thread, at most 100 epochs or 15 minutes, and early stopping after five validation checks without improvement. The CNN is the Week 1 fit. Validation chooses the ridge alpha and one global fusion weight from `{0, 0.25, 0.5, 0.75, 1}`. The fusion weight multiplies the LSTM prediction; the complement multiplies the CNN prediction.
 
 Final test evaluation is a separate, one-time step. First commit all model, preprocessing, checkpoint and fusion choices using training and validation evidence. Then run each required final evaluation once, record the lock commit, evaluation date and run IDs, and set `test_scored=yes` on the corresponding existing run-log rows. Do not tune from test results.
+## Final evaluation after lock
+
+Once `STUDY_LOCK.md` and `study_lock.json` are committed, use that full commit hash. Run the preflight first; it verifies the lock, input hashes, split and selected checkpoint hashes without producing test predictions or metrics. Then run the final evaluation exactly once, to a new output directory:
+
+```powershell
+$lockCommit = (git rev-parse HEAD).Trim()
+uv run python c2_final_eval.py --index .\ersst5.nino.mth.91-20.ascii --grid .\TrackC_ERSSTv5_subset.npz --split .\T03_C2_forecast.csv --lock-commit $lockCommit --out .\final_test_2026-11-22 --preflight
+uv run python c2_final_eval.py --index .\ersst5.nino.mth.91-20.ascii --grid .\TrackC_ERSSTv5_subset.npz --split .\T03_C2_forecast.csv --lock-commit $lockCommit --out .\final_test_2026-11-22
+```
+
+The evaluator refuses to run if the committed source has changed, the lock commit differs from `HEAD`, an input or checkpoint hash differs, or the output directory already exists. It generates the locked predictions before extracting test targets and writes per-lead ACC/RMSE plus predictions under the chosen output directory. Do not rerun it or make choices from its test results.
+
