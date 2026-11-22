@@ -40,6 +40,9 @@ def validate_manifest(path, data):
     counts = f.partition.value_counts().to_dict()
     got = (counts.get("train", 0), counts.get("val", 0), counts.get("test", 0), counts.get("excluded", 0))
     if got != (505, 109, 229, 22): raise ValueError(f"split file counts {got}")
+    expected_ids = data["table"].issue.astype(str).tolist()
+    if f.sample_id.astype(str).tolist() != expected_ids:
+        raise ValueError("split file sample_id values differ from reconstructed issue IDs")
     expected = data["table"].partition.tolist()
     if f.partition.tolist() != expected: raise ValueError("split file rows differ from Annex D3 reconstruction")
     return f, got
