@@ -131,7 +131,7 @@ def smoke(data, split, out, total_start):
     fuse_t=time.perf_counter(); candidates=[]
     for w in (0,.25,.5,.75,1):
         q=w*preds["1-D LSTM"]+(1-w)*preds["2-D map CNN"]
-        candidates.append((float(np.sqrt(np.mean((yv-q)**2))),abs(w-.5),w))
+        candidates.append((metrics(yv,q)["mean_rmse"],abs(w-.5),w))
     best_w=min(candidates,key=lambda z:(z[0],z[1]))[2]
     logs.append((f"fusion (index LSTM + map CNN), selected weight={best_w:g}",6,time.perf_counter()-fuse_t,"validation RMSE selection; no new fit"))
     # The core experiments are validation comparisons and lead-wise metrics from these same predictions.
