@@ -1,0 +1,96 @@
+{
+  "track": "C2",
+  "seed": 22,
+  "dates": "1950-01 through 2024-12 inclusive",
+  "issue_month_ranges": {
+    "train": [
+      "1951-12",
+      "1993-12"
+    ],
+    "validation": [
+      "1994-12",
+      "2003-12"
+    ],
+    "test": [
+      "2004-12",
+      "2023-12"
+    ]
+  },
+  "counts": {
+    "train": 505,
+    "validation": 109,
+    "test": 229,
+    "dropped_boundary": 22,
+    "eligible_total": 843,
+    "candidate_issue_months": 865
+  },
+  "split_rule": "All targets at +1,+3,+6,+9,+12 months within the same chronological partition; validation is 1995-01..2004-12; histories may use earlier observed months.",
+  "model": "Conv2d(24,32,3,pad=1)-ReLU-MaxPool2; Conv2d(32,32,3,pad=1)-ReLU-MaxPool2; Conv2d(32,16,3,pad=1)-ReLU-AdaptiveAvgPool(3,6)-Flatten-Linear(288,32)-ReLU-Linear(32,5)",
+  "trainable_parameters": 30229,
+  "settings": {
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "torch_threads": 6,
+    "data_loader_workers": 0,
+    "device": "CPU",
+    "loss": "MSE in degC squared",
+    "validation_checks": "every epoch",
+    "max_epochs": 100,
+    "elapsed_limit_seconds": 900,
+    "early_stopping_patience": 5
+  },
+  "training": {
+    "epochs": 9,
+    "best_epoch": 4,
+    "best_validation_mse": 0.3201685501347988,
+    "elapsed_seconds": 3.851368999981787,
+    "aggregate_cpu_seconds": 22.515625,
+    "stopped_by": "early stopping (5 validation checks without improvement)",
+    "optimization_updates": 144
+  },
+  "memory": {
+    "total_ram_bytes": 16869285888,
+    "available_ram_bytes": 483315712,
+    "peak_working_set_bytes": 494596096
+  },
+  "inference": {
+    "input_examples": 229,
+    "output_shape": [
+      229,
+      5
+    ],
+    "finite_output_values": 1145,
+    "inference_seconds": 0.11115419998532161,
+    "test_targets_read": false,
+    "test_metrics_computed": false
+  },
+  "grid_verification": {
+    "source_title": "NOAA ERSSTv5 (in situ only)",
+    "source_product_version": "Version 5",
+    "source_data_modified": "2026-09-03",
+    "source_file_bytes": 159094577,
+    "source_download_url": "https://downloads.psl.noaa.gov/Datasets/noaa.ersst.v5/sst.mnmean.nc",
+    "source_time_start": "1950-01-01 00:00:00",
+    "issued_subset_bytes": 4921092,
+    "source_subset_match_max_abs": 0.0,
+    "coordinates_exact_match": true,
+    "array_shape": [
+      900,
+      21,
+      81
+    ],
+    "ocean_cells": 1626,
+    "land_cells": 75,
+    "monthly_climatology_period": "1950-01 through 1994-12",
+    "normalization": "one mean/std per temporal channel; training examples and ocean cells only"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "os": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.4.2",
+    "torch": "2.10.0+cpu",
+    "netCDF4": "1.7.4",
+    "logical_processors_visible": 24
+  }
+}
