@@ -1,12 +1,12 @@
 run_id,date,commit,component,condition,seed,n_train,epochs,updates,stop_reason,elapsed_s,cpu_s,peak_mem_mb,threads,workers,trainable_params,val_metric,val_value,best_epoch,test_scored
 R001,2026-10-02,unavailable,reference,matched,22,505,9,144,early_stop,3.215,18.844,471.7,intra-op=6;inter-op=1,0,30229,mean_rmse,not recorded; R001 validation prediction array unavailable,4,no
-R002,2026-11-04,unavailable,baseline,ridge_alpha=0.1,22,505,,,classical,0.000605,0,718.23,intra-op=6;inter-op=1,0,,mean_rmse,0.67157334,,no
+R002,2026-11-04,unavailable,baseline,ridge_alpha=0.1,22,505,,,classical,0.000605,0,718.23,intra-op=6;inter-op=1,0,,mean_rmse,0.67157334,,yes
 R003,2026-11-04,unavailable,baseline,ridge_alpha=1,22,505,,,classical,0.000251,0,718.23,intra-op=6;inter-op=1,0,,mean_rmse,0.67256292,,no
 R004,2026-11-04,unavailable,baseline,ridge_alpha=10,22,505,,,classical,0.000238,0,718.23,intra-op=6;inter-op=1,0,,mean_rmse,0.68150065,,no
-R005,2026-11-04,unavailable,1d,reference,22,505,19,304,early_stop,1.407932,7.984375,718.23,intra-op=6;inter-op=1,0,29657,mean_rmse,0.61425626,14,no
-R006,2026-11-04,unavailable,attention,reference,22,505,34,544,early_stop,2.745233,16.34375,718.23,intra-op=6;inter-op=1,0,29742,mean_rmse,0.66582388,29,no
-R007,2026-11-04,1e65b045968f,fusion,weight_lstm=0.25,22,,,,none,0.465115,1.125,567.29,intra-op=6;inter-op=1,0,,mean_rmse,0.53293741,,no
-R008,2026-10-02,unavailable,reference,week1_repeat; output artifacts under out,22,505,9,144,early_stop,3.491204,49.984375,574.71,intra-op=16;inter-op=16,0,30229,mean_rmse,0.53864700,4,no
+R005,2026-11-04,unavailable,1d,reference,22,505,19,304,early_stop,1.407932,7.984375,718.23,intra-op=6;inter-op=1,0,29657,mean_rmse,0.61425626,14,yes
+R006,2026-11-04,unavailable,attention,reference,22,505,34,544,early_stop,2.745233,16.34375,718.23,intra-op=6;inter-op=1,0,29742,mean_rmse,0.66582388,29,yes
+R007,2026-11-04,1e65b045968f,fusion,weight_lstm=0.25,22,,,,none,0.465115,1.125,567.29,intra-op=6;inter-op=1,0,,mean_rmse,0.53293741,,yes
+R008,2026-10-02,unavailable,reference,week1_repeat; output artifacts under out,22,505,9,144,early_stop,3.491204,49.984375,574.71,intra-op=16;inter-op=16,0,30229,mean_rmse,0.53864700,4,yes
 R009,not recorded,unavailable,baseline,historical_ridge_alpha=0.1 (October proposal),not recorded,505,,,classical,,,,,0,,mean_rmse,not recorded; historical prediction array unavailable,,no
 R010,not recorded,unavailable,baseline,historical_ridge_alpha=1 (October proposal),not recorded,505,,,classical,,,,,0,,mean_rmse,not recorded; historical prediction array unavailable,,no
 R011,not recorded,unavailable,baseline,historical_ridge_alpha=10 (October proposal),not recorded,505,,,classical,,,,,0,,mean_rmse,not recorded; historical prediction array unavailable,,no
