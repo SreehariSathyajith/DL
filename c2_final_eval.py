@@ -27,7 +27,7 @@ def verify_lock(lock_path: Path, lock_commit: str, root: Path) -> dict:
     head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
     if head != lock_commit:
         raise SystemExit(f"Refusing evaluation: HEAD {head} differs from --lock-commit {lock_commit}.")
-    code_files = ["c2_final_eval.py", "c2_checkpoint.py", "enso_data.py", "models.py", "STUDY_LOCK.md", "study_lock.json"]
+    code_files = ["c2_final_eval.py", "c2_checkpoint.py", "enso_data.py", "models.py", "STUDY_LOCK.md", "study_lock.json", "pyproject.toml", "uv.lock", "T03_C2_forecast.csv"]
     changed = subprocess.check_output(["git", "status", "--porcelain", "--", *code_files], cwd=root, text=True)
     if changed.strip():
         raise SystemExit("Refusing evaluation: locked evaluation or model source files have uncommitted changes.")
@@ -86,7 +86,7 @@ def main() -> None:
     lock = verify_lock(root / "study_lock.json", args.lock_commit, root)
     out = Path(args.out).resolve()
     if args.preflight:
-        if sha256(Path(args.index)) != lock["inputs"]["index_sha256"] or sha256(Path(args.grid)) != lock["inputs"]["grid_sha256"]:
+        if sha256(Path(args.index)) != lock["inputs"]["index_sha256"] or sha256(Path(args.grid)) != lock["inputs"]["grid_sha256"] or sha256(Path(args.split)) != lock["inputs"]["split_sha256"]:
             raise SystemExit("Preflight failed: issued input hash mismatch.")
         if out.exists():
             raise SystemExit("Preflight output path already exists; choose a fresh path.")
@@ -102,7 +102,7 @@ def main() -> None:
     if claim_path.exists():
         raise SystemExit("Refusing evaluation: a final test-evaluation claim already exists. Do not score again.")
     started = time.perf_counter()
-    if sha256(Path(args.index)) != lock["inputs"]["index_sha256"] or sha256(Path(args.grid)) != lock["inputs"]["grid_sha256"]:
+    if sha256(Path(args.index)) != lock["inputs"]["index_sha256"] or sha256(Path(args.grid)) != lock["inputs"]["grid_sha256"] or sha256(Path(args.split)) != lock["inputs"]["split_sha256"]:
         raise SystemExit("Refusing evaluation: issued input hash mismatch.")
     data = build(args.index, args.grid, include_test_labels=False)
     split_file, counts = validate_manifest(args.split, data)
