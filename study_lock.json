@@ -1,0 +1,14 @@
+{
+  "ridge_alpha": 0.1,
+  "fusion_weight_lstm": 0.25,
+  "inputs": {
+    "index_sha256": "bedcd0683c07f7ccb2ae358a90cb39d57413dcc8881027e0c30a1811f6d58012",
+    "grid_sha256": "aa35edf96391272199fdd62e4428ec89d5a2b58ba9267acfd875e77026a888cf",
+    "split_sha256": "1c3d5751afab708625da7fe0addc8a7dc922d285a471287d0a6b4bd369a5a905"
+  },
+  "artifacts": {
+    "out/cnn_best.pt": "c70a0b1dea6aac20bb3ed570bcfabcecb35da484aebf059309704f60a00f3b4f",
+    "checkpoint_submission/results/lstm_best.pt": "fdd211c4b5763b1679941a8a4d3cbe46781f41f3cca4e8c482ab936bf344e66f",
+    "checkpoint_submission/results/attention_best.pt": "35b6fd86af7a5b1827d82cfd0af0ccc38842fd7653fd291c10c15a0eb6cc5cac"
+  }
+}
