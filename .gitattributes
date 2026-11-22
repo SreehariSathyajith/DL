@@ -1,5 +1,13 @@
+# Keep datasets and interpreter caches out of repository archives.
 TrackC_ERSSTv5_subset.npz export-ignore
 ersst5.nino.mth.91-20.ascii export-ignore
-out/ export-ignore
 __pycache__/ export-ignore
-checkpoint_submission/ export-ignore
+
+# Keep the prior checkpoint upload separate; retain trained weights and validation artifacts.
+checkpoint_submission/T03_C2_Checkpoint.docx export-ignore
+checkpoint_submission/T03_C2_repo_checkpoint.zip export-ignore
+checkpoint_submission/T03_C2_runlog.csv export-ignore
+checkpoint_submission/T03_C2_smoke_log.txt export-ignore
+checkpoint_submission/results/T03_C2_runlog.csv export-ignore
+checkpoint_submission/smoke/ export-ignore
+checkpoint_submission/smoke_precommit/ export-ignore
