@@ -98,6 +98,9 @@ def main() -> None:
         return
     if out.exists():
         raise SystemExit("Refusing evaluation: output path already exists. The final evaluation is one-time.")
+    claim_path = root / "FINAL_TEST_EVALUATION_CLAIM.json"
+    if claim_path.exists():
+        raise SystemExit("Refusing evaluation: a final test-evaluation claim already exists. Do not score again.")
     started = time.perf_counter()
     if sha256(Path(args.index)) != lock["inputs"]["index_sha256"] or sha256(Path(args.grid)) != lock["inputs"]["grid_sha256"]:
         raise SystemExit("Refusing evaluation: issued input hash mismatch.")
@@ -106,6 +109,9 @@ def main() -> None:
     if counts != (505, 109, 229, 22):
         raise SystemExit(f"Unexpected split counts: {counts}")
 
+    claim = {"state": "started", "lock_commit": args.lock_commit, "evaluation_date": date.today().isoformat(), "output": str(out)}
+    with claim_path.open("x", encoding="utf-8") as f:
+        json.dump(claim, f, indent=2)
     # Generate every fixed prediction before extracting any test target values.
     preds = collect_predictions(root, data, lock)
     y_all, _, _ = load_raw(args.index, args.grid)
@@ -129,6 +135,9 @@ def main() -> None:
     out.mkdir(parents=True, exist_ok=False)
     (out / "final_test_results.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
     np.savez_compressed(out / "final_test_predictions.npz", **preds)
+    claim["state"] = "completed"
+    claim["result_file"] = str(out / "final_test_results.json")
+    claim_path.write_text(json.dumps(claim, indent=2), encoding="utf-8")
     print(json.dumps(result, indent=2))
 
 
